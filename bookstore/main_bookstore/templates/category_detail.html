@@ -1,0 +1,42 @@
+
+{% extends 'shop.html' %}
+{% block title %}
+Категория
+{% endblock %}
+
+{% block content %}
+
+<section class="py-5 choice min-vh-100">
+    <div class="container mt-3">
+        <h2 class="text-center">{{ category.name }}  {{ category_product }}</h2>
+        <div class="row mt-3">
+            <div class="col-lg-12 text-center">
+                <div class="row">
+                    {% for product in category_products %}
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card mt-3">
+                            <div class=" book book-1 align-items-center p-2 text-center">
+                                <a href="{{ product.get_absolute_url }}"><img src="{{ product.image.url }}" alt="Обложка книги"></a>
+                                <h5>{{ product.title }}</h5>
+                                <div class="mt-3 info">
+                                    <span class="text1 d-block">{{ product.author }}</span>
+                                </div>
+                                <div class="cost mt-3 fst-italic text-muted">
+                                    <span class="text1 d-block">{{ product.price }} руб.</span>
+                                </div>
+                            </div>
+
+                            <div class="p-3 btn-book text-center text-white mt-3">
+                                <a href="{% url 'add_to_cart' slug=product.slug %}"><span>В корзину</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

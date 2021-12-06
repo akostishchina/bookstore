@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.auth_group</OriginalElement>
+  <nodes>
+    <node x="280.6720238095235" y="88.0">0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.django_content_type</node>
+    <node x="48.5" y="649.0">0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.auth_group_permissions</node>
+    <node x="747.2970238095236" y="859.0">0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.main_bookstore_order</node>
+    <node x="363.24999999999994" y="329.0">0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.django_admin_log</node>
+    <node x="1014.0470238095236" y="936.0">0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.main_bookstore_cartproduct</node>
+    <node x="321.2970238095235" y="649.0">0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.auth_user_groups</node>
+    <node x="180.25" y="373.0">0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.auth_permission</node>
+    <node x="499.2970238095235" y="649.0">0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.auth_user_user_permissions</node>
+    <node x="599.625" y="0.0">0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.auth_user</node>
+    <node x="1394.2934523809522" y="0.0">0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.django_migrations</node>
+    <node x="0.0" y="1378.0">0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.django_session</node>
+    <node x="893.4166666666666" y="616.0">0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.main_bookstore_cart</node>
+    <node x="205.0" y="1378.0">0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.sqlite_sequence</node>
+    <node x="1138.2934523809522" y="594.0">0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.main_bookstore_product</node>
+    <node x="888.4166666666667" y="373.0">0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.main_bookstore_customer</node>
+    <node x="943.5470238095236" y="1232.0">0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.main_bookstore_cart_products</node>
+    <node x="1135.2934523809522" y="384.0">0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.main_bookstore_category</node>
+    <node x="0.0" y="395.0">0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.auth_group</node>
+    <node x="655.5470238095236" y="1232.0">0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.main_bookstore_customer_orders</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.django_admin_log" target="0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.auth_user" relationship="REFERENCES">
+      <point x="47.75" y="-105.5" />
+      <point x="506.49999999999994" y="303.0" />
+      <point x="679.625" y="303.0" />
+      <point x="0.0" y="138.5" />
+    </edge>
+    <edge source="0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.main_bookstore_cart_products" target="0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.main_bookstore_cart" relationship="REFERENCES">
+      <point x="-61.999999999999886" y="-50.5" />
+      <point x="1005.5470238095236" y="1206.0" />
+      <point x="1001.7327380952379" y="1206.0" />
+      <point x="1001.7327380952379" y="832.0" />
+      <point x="996.9166666666666" y="832.0" />
+      <point x="0.0" y="83.5" />
+    </edge>
+    <edge source="0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.main_bookstore_customer_orders" target="0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.main_bookstore_customer" relationship="REFERENCES">
+      <point x="-67.0" y="-50.5" />
+      <point x="722.5470238095236" y="1206.0" />
+      <point x="736.7970238095236" y="1206.0" />
+      <point x="736.7970238095236" y="572.0" />
+      <point x="804.7934523809522" y="572.0" />
+      <point x="804.7934523809522" y="562.0" />
+      <point x="924.5833333333334" y="562.0" />
+      <point x="-72.33333333333337" y="61.5" />
+    </edge>
+    <edge source="0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.main_bookstore_order" target="0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.main_bookstore_cart" relationship="REFERENCES">
+      <point x="47.5" y="-160.5" />
+      <point x="889.7970238095236" y="832.0" />
+      <point x="996.9166666666666" y="832.0" />
+      <point x="0.0" y="83.5" />
+    </edge>
+    <edge source="0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.main_bookstore_cart" target="0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.main_bookstore_customer" relationship="REFERENCES">
+      <point x="1.1368683772161603E-13" y="-83.5" />
+      <point x="0.0" y="61.5" />
+    </edge>
+    <edge source="0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.main_bookstore_customer_orders" target="0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.main_bookstore_order" relationship="REFERENCES">
+      <point x="67.0" y="-50.5" />
+      <point x="856.5470238095236" y="1206.0" />
+      <point x="842.2970238095236" y="1206.0" />
+      <point x="0.0" y="160.5" />
+    </edge>
+    <edge source="0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.auth_permission" target="0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.django_content_type" relationship="REFERENCES">
+      <point x="0.0" y="-61.5" />
+      <point x="261.75" y="303.0" />
+      <point x="371.1720238095235" y="303.0" />
+      <point x="0.0" y="50.5" />
+    </edge>
+    <edge source="0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.auth_user_groups" target="0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.auth_group" relationship="REFERENCES">
+      <point x="-39.5" y="-50.5" />
+      <point x="360.7970238095235" y="562.0" />
+      <point x="66.5" y="562.0" />
+      <point x="0.0" y="39.5" />
+    </edge>
+    <edge source="0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.main_bookstore_cartproduct" target="0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.main_bookstore_customer" relationship="REFERENCES">
+      <point x="0.0" y="-83.5" />
+      <point x="1131.5470238095236" y="832.0" />
+      <point x="1126.232738095238" y="832.0" />
+      <point x="1126.232738095238" y="572.0" />
+      <point x="1069.25" y="572.0" />
+      <point x="72.33333333333326" y="61.5" />
+    </edge>
+    <edge source="0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.main_bookstore_cartproduct" target="0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.main_bookstore_cart" relationship="REFERENCES">
+      <point x="-78.33333333333326" y="-83.5" />
+      <point x="1053.2136904761903" y="832.0" />
+      <point x="996.9166666666666" y="832.0" />
+      <point x="0.0" y="83.5" />
+    </edge>
+    <edge source="0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.main_bookstore_cart_products" target="0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.main_bookstore_cartproduct" relationship="REFERENCES">
+      <point x="62.000000000000114" y="-50.5" />
+      <point x="1129.5470238095236" y="1206.0" />
+      <point x="1131.5470238095236" y="1206.0" />
+      <point x="0.0" y="83.5" />
+    </edge>
+    <edge source="0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.auth_group_permissions" target="0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.auth_permission" relationship="REFERENCES">
+      <point x="51.0" y="-50.5" />
+      <point x="201.5" y="572.0" />
+      <point x="261.75" y="572.0" />
+      <point x="0.0" y="61.5" />
+    </edge>
+    <edge source="0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.django_admin_log" target="0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.django_content_type" relationship="REFERENCES">
+      <point x="-47.75" y="-105.5" />
+      <point x="410.99999999999994" y="303.0" />
+      <point x="371.1720238095235" y="303.0" />
+      <point x="0.0" y="50.5" />
+    </edge>
+    <edge source="0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.auth_user_user_permissions" target="0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.auth_user" relationship="REFERENCES">
+      <point x="56.75" y="-50.5" />
+      <point x="669.5470238095236" y="572.0" />
+      <point x="676.6720238095236" y="572.0" />
+      <point x="676.6720238095236" y="303.0" />
+      <point x="679.625" y="303.0" />
+      <point x="0.0" y="138.5" />
+    </edge>
+    <edge source="0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.main_bookstore_cartproduct" target="0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.main_bookstore_product" relationship="REFERENCES">
+      <point x="78.33333333333326" y="-83.5" />
+      <point x="1209.8803571428568" y="832.0" />
+      <point x="1242.2934523809522" y="832.0" />
+      <point x="0.0" y="105.5" />
+    </edge>
+    <edge source="0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.main_bookstore_customer" target="0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.auth_user" relationship="REFERENCES">
+      <point x="0.0" y="-61.5" />
+      <point x="996.9166666666667" y="303.0" />
+      <point x="679.625" y="303.0" />
+      <point x="0.0" y="138.5" />
+    </edge>
+    <edge source="0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.auth_user_user_permissions" target="0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.auth_permission" relationship="REFERENCES">
+      <point x="-56.75" y="-50.5" />
+      <point x="556.0470238095236" y="572.0" />
+      <point x="261.75" y="572.0" />
+      <point x="0.0" y="61.5" />
+    </edge>
+    <edge source="0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.auth_user_groups" target="0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.auth_user" relationship="REFERENCES">
+      <point x="39.5" y="-50.5" />
+      <point x="439.7970238095235" y="562.0" />
+      <point x="564.75" y="562.0" />
+      <point x="564.75" y="303.0" />
+      <point x="679.625" y="303.0" />
+      <point x="0.0" y="138.5" />
+    </edge>
+    <edge source="0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.main_bookstore_order" target="0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.main_bookstore_customer" relationship="REFERENCES">
+      <point x="-47.5" y="-160.5" />
+      <point x="794.7970238095236" y="832.0" />
+      <point x="833.7934523809522" y="832.0" />
+      <point x="833.7934523809522" y="572.0" />
+      <point x="804.7934523809522" y="572.0" />
+      <point x="804.7934523809522" y="562.0" />
+      <point x="924.5833333333334" y="562.0" />
+      <point x="-72.33333333333337" y="61.5" />
+    </edge>
+    <edge source="0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.auth_group_permissions" target="0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.auth_group" relationship="REFERENCES">
+      <point x="-51.0" y="-50.5" />
+      <point x="99.5" y="562.0" />
+      <point x="66.5" y="562.0" />
+      <point x="0.0" y="39.5" />
+    </edge>
+    <edge source="0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.main_bookstore_product" target="0190beea-d3a8-4fa8-889e-ff8f7bc3efee.TABLE:main.main_bookstore_category" relationship="REFERENCES">
+      <point x="0.0" y="-105.5" />
+      <point x="0.0" y="50.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.30887258172114745" showDependencies="false" x="780.0" y="739.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Columns</Category>
+    <Category>Comments</Category>
+    <Category>Key columns</Category>
+    <Category>Virtual foreign keys</Category>
+  </Categories>
+</Diagram>
+

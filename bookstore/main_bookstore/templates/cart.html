@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% load static %}
+{% static 'style/styleForShop.css' %}
+
+{% block title %}
+Корзина
+{% endblock %}
+
+{% block content %}
+    <section class="py-5 mt-5 head_cart">
+        <div class="container-fluid">
+            <nav class="nav nav-pills flex-column flex-sm-row">
+              <a class="flex-sm-fill text-sm-center nav-link active" aria-current="page" href="#">Корзина</a>
+              <a class="flex-sm-fill text-sm-center nav-link" href="#">Детали</a>
+              <!--<a class="flex-sm-fill text-sm-center nav-link" href="#">Оплата</a>!-->
+            </nav>
+        </div>
+    </section>
+    <section>
+        <div class="container mt-3 cart_body">
+            <div class="row">
+                <div class="col-md-7 cart_info">
+                    <h2>Корзина</h2><hr>
+                    <h3 class="text-center mt-5 mb-5">{% if not cart.products.count %}Ваша корзина пуста{% endif %}</h3>
+
+                    {% if messages %}
+
+                        {% for message in messages %}
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                              <strong>{{ message }}</strong>
+                              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        {% endfor %}
+
+                    {% endif %}
+
+                    <div class="card mb-3 books_in_cart" style="max-width: 540px;">
+                        {% for item in cart.products.all %}
+                        <div class=" b_i_c row g-0">
+                            <div class="col-md-4">
+                              <img src="{{ item.product.image.url }}" class="img-fluid rounded-start" alt="...">
+                            </div>
+                            <div class="col-md-8 books_in_cart">
+                                <div class="card-body">
+                                    <h5 class="card-title name_book">{{ item.product.title }}</h5>
+                                    <p class="card-text text-muted fst-italic author_book">{{ item.product.author }}</p>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <p class="card-text price_book"><small class="text-muted">{{ item.product.price }} руб.</small></p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <form action="{% url 'change_qty' slug=item.product.slug %}" method="post" class="row g-0">
+                                                {% csrf_token %}
+                                                <div class="col-md-8">
+                                                    <input type="number" class="form-control" name="qty" min="1" value="{{ item.qty }}">
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input type="submit" class="btn btn-outline-primary" value="ОК">
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 del_b d-grid gap-2 d-md-flex justify-content-md-end">
+                                        <a href="{% url 'delete_from_cart' slug=item.product.slug %}">
+                                            <button class="btn btn-danger">Удалить</button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="col-md-5 summa">
+                    <h2>Общая сумма</h2><hr>
+                    <!--
+                    <div class="input-group mb-3 w-50">
+                      <input type="text" class="form-control" placeholder="Введите промокод" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                      <button class="btn btn-outline-secondary" type="button" id="button-addon2">ОК</button><br>
+                    </div>!-->
+                    <div class="row summa_row">
+                        <div class="col-md-6">
+                            <p>Сумма</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>{{ cart.final_price }} руб.</p>
+                        </div>
+                    </div>
+                    <!--
+                    <div class="row sale_row">
+                        <div class="col-md-6">
+                            <p>Скидка</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>50 руб.</p>
+                        </div>
+                    </div><hr>
+
+                    <div class="row howmuch_row">
+                        <div class="col-md-6">
+                            <p>ИТОГО</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>550 руб.</p>
+                        </div>
+                    </div>
+                    !-->
+                    <div class="row howmuch_row mb-3">
+                        <div class="col-md-12 mt-3">
+                            <a href="{% url 'checkout' %}">
+                                <button class="btn btn-primary">Перейти к оформлению</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+{% endblock %}

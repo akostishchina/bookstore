@@ -1,0 +1,165 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/da9b3cea49.js" crossorigin="anonymous"></script>
+    <link href="{% static 'style/styleForShop.css' %}" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark" style="background-color: #198b71; font-weight: bold;">
+        <div class="container-fluid">
+            <span class="navbar-brand">
+                <img src="{% static 'image/logo.png' %}" alt="" width="30" height="30" class="d-inline-block align-text-top">
+                MyBook
+            </span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse headMenu" id="navbarSupportedContent" >
+                <!--
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Введите название" aria-label="Search">
+                    <button class="btn btn-outline-light" type="submit">Поиск</button>
+                </form>
+                !-->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    {% if not request.user.is_authenticated %}
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Авторизация</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'registration' %}">Регистрация</a>
+                    </li>
+
+                    {% endif %}
+
+                    <li class="nav-item">
+                        {% if request.user.is_authenticated %}
+                        <span class="txt text-light">Здравствуйте,
+                            <span class="badge bg-danger">
+                                <a class="nav-link" href="{% url 'lk' %}">{{ request.user.username }}</a>
+                            </span>
+                             | <a style="text-decoration: none; color: white" href="{% url 'logout' %}">Выйти</a>
+                        </span>
+                        {% endif %}
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/' %}active{% endif %}" aria-current="page" href="{% url 'home' %}">Главная</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}#aboutUs">О Нас</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/shop' %}active{% endif %}" href="{% url 'shop' %}">Магазин</a>
+                    </li>
+                    <li class="nav-item">
+
+                    </li>
+                    <!--
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-user"></i></a>
+                    </li>
+                    !-->
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/cart/' %}active{% endif %}" href="{% url 'cart' %}">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="badge rounded-pill bg-danger">{{ cart.products.count }}</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="min-vh-100">
+        {% block content %}
+
+        {% endblock %}
+    </div>
+    <footer>
+        <section class="footer">
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-md-4 col-12">
+                        <h4>Новости и рассылка</h4>
+                        <div class="col-md-8 col-12 mx-auto">
+                            <div class="input-group ">
+                                <input type="email" id="inputEmail" class="form-control" placeholder="E-mail">
+                                <button class="btn btn-outline-light" type="button" id="button-addon2"><i class="fab fa-telegram-plane"></i></button>
+                            </div><br>
+
+                            <button type="button" class="btn btn-link link_help" data-bs-toggle="modal" data-bs-target="#exampleModal-help">
+                              Помощь
+                            </button>
+                        <!-- Modal -->
+                            <div class="modal fade" id="exampleModal-help" tabindex="-150" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Часто задаваемые вопросы</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <ol class="list-group list-group-numbered">
+                                      <li class="list-group-item d-flex justify-content-between align-items-start">
+                                        <div class="ms-2 me-auto">
+                                          <div class="fw-bold">Можно ли в пункте самовывоза расплатиться наличными?</div>
+                                          Да, в пунктах самовывоза можно расплатиться любым способом оплаты.
+                                        </div>
+                                      </li>
+                                      <li class="list-group-item d-flex justify-content-between align-items-start">
+                                        <div class="ms-2 me-auto">
+                                          <div class="fw-bold">Сколько будет стоить доставка до двери?</div>
+                                          Во время оформления заказа вы заполните поле Адрес. В зависимости от удаленности от склада будет
+                                            разная стоимость доставки. Цены варьируются от 100 до 400 рублей.
+                                        </div>
+                                      </li>
+                                      <li class="list-group-item d-flex justify-content-between align-items-start">
+                                        <div class="ms-2 me-auto">
+                                          <div class="fw-bold">Можно ли будет на определенное время заказать доставку?</div>
+                                          Да. Для этого при оформлении заказа заполните поле Комментарий. Также можно будет уточнить при звонке оператора.
+                                        </div>
+                                      </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                                        <div class="ms-2 me-auto">
+                                          <div class="fw-bold">Можно ли будет отменить заказ?</div>
+                                          Да, уточните свою просьбу во время звонка оператора.
+                                        </div>
+                                      </li>
+                                    </ol><br>
+                                    <p class="text-center" style="background-color: antiquewhite">Если Вы не увидели ответа на ваш вопрос, то напишите нам на почту: <b>support@gmail.com</b>
+                                        Постараемся решить Вашу проблему в самое ближайшее время :)</p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-12">
+                        <img src="{% static 'image/MyBook.PNG' %}" height="230px" width="230px" alt="Логотип">
+                    </div>
+                    <div class="col-md-4 col-12">
+                        <h4>Следите за нами</h4>
+                        <div class="footer-icons">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-pinterest"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </footer>
+    <script src="https://use.fontawesome.com/708ed2d254.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

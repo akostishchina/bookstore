@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+{% static 'style/styleForShop.css' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+Оформление
+{% endblock %}
+
+{% block content %}
+    <section class="py-5 mt-5 head_cart">
+        <div class="container-fluid">
+            <nav class="nav nav-pills flex-column flex-sm-row">
+              <a class="flex-sm-fill text-sm-center nav-link" aria-current="page" href="#">Корзина</a>
+              <a class="flex-sm-fill text-sm-center nav-link active" href="#">Детали</a>
+              <!--<a class="flex-sm-fill text-sm-center nav-link" href="#">Оплата</a>!-->
+            </nav>
+        </div>
+    </section>
+    <section>
+        <div class="container mt-3 cart_body">
+            <div class="row">
+                <div class="col-md-7 cart_info">
+                    <h2>Оформление заказа</h2><hr>
+                        <div class="card mb-3 books_in_cart" style="max-width: 540px;">
+                        {% for item in cart.products.all %}
+                        <div class=" b_i_c row g-0">
+                            <div class="col-md-4">
+                              <img src="{{ item.product.image.url }}" class="img-fluid rounded-start" alt="...">
+                            </div>
+                            <div class="col-md-8 books_in_cart">
+                                <div class="card-body">
+                                    <h5 class="card-title name_book">{{ item.product.title }}</h5>
+                                    <p class="card-text text-muted fst-italic author_book">{{ item.product.author }}</p>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <p class="card-text price_book"><small class="text-muted">{{ item.product.price }} руб.</small></p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p class="card-text price_book">{{ item.qty }} шт.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="col-md-5 summa">
+                    <h2>Общая сумма</h2><hr>
+                    <div class="row summa_row">
+                        <div class="col-md-6">
+                            <p>Сумма</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>{{ cart.final_price }} руб.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="container w-50 order">
+                <h3 class="text-center">Форма заказа</h3>
+                <form action="{% url 'make_order' %}" method="post">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <input type="submit" class="btn btn-primary mt-3 mb-3" value="Оформить заказ">
+                </form>
+            </div>
+
+        </div>
+    </section>
+{% endblock %}

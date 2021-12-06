@@ -1,0 +1,41 @@
+<!--<div class="pagination">
+ <span class="step-links">
+  {% if page.has_previous %}
+      <a href="?page={{ page.previous_page_number }}">Previous</a>
+  {% endif %}
+    <span class="current">
+  Page {{ page.number }} of {{ page.paginator.num_pages }}.
+    </span>
+  {% if page.has_next %}
+        <a href="?page={{ page.next_page_number }}">Next</a>
+  {% endif %}
+  </span>
+</div>!-->
+
+{% load static %}
+
+{% if products.has_other_pages %}
+<nav id="pagination" class="col align-self-center" aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+    {% if products.has_previous %}
+        <li class="page-item"><a class="page-link" href="?page={{ products.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+    <li class="page-item disabled"><span class="page-link" href="#" tabindex="-1" aria-disabled="true">&laquo;</span></li>
+    {% endif %}
+    {% for i in products.paginator.page_range %}
+        {% if i > products.number|add:-4 and i < products.number|add:4 %}
+            {% if products.number == i %}
+                <li class="page-item active" aria-current="page"><a class="page-link" href="#">{{ i }} <span class="sr-only">(current)</span></a></li>
+            {% else %}
+                <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+    {% if products.has_next %}
+        <li class="page-item"><a class="page-link" href="?page={{ products.next_page_number }}">&raquo;</a></li>
+    {% else %}
+    <li class="page-item disabled"><span class="page-link" href="#" tabindex="-1" aria-disabled="true">&raquo;</span></li>
+    {% endif %}
+    </ul>
+</nav>
+{% endif %}
